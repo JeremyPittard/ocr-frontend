@@ -2,11 +2,13 @@ import Head from "next/head";
 import { gql } from "@apollo/client";
 import client from "../lib/client";
 import { useState } from "react";
+import { Nav } from "../components/Nav";
 const Home = (props) => {
   console.log(props.reviews, 'props log');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
+    <Nav />
       {props.banner.map((b, i) => {
         const imgUrl = b.banner_acf.bannerImage.mediaItemUrl;
         const imgText = b.banner_acf.bannerText;
