@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { gql } from "@apollo/client";
 import client from "../lib/client";
+import { useState } from "react";
 const Home = (props) => {
   console.log(props.reviews, 'props log');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
       {props.banner.map((b, i) => {
