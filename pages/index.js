@@ -5,7 +5,6 @@ import { Banner } from "../components/Banner";
 import { Services } from "../components/Services";
 import { About } from "../components/About";
 import { Footer } from "../components/Footer";
-import { Reviews } from "../components/Reviews";
 import { Contact } from "../components/Contact";
 import { Portfolio } from "../components/Portfolio";
 
@@ -18,7 +17,6 @@ const Home = (props) => {
       <About aboutText={props.about} />
       <Services services={props.services} />
       <Portfolio portfolio={props.portfolio}/>
-      <Reviews reviews={props.reviews} />
       <Contact />
       <Footer />
     </>
@@ -35,6 +33,10 @@ export async function getStaticProps() {
           nodes {
             about_acf {
               aboutOcr
+              image {
+                mediaItemUrl
+                altText
+              }
             }
           }
         }
@@ -141,7 +143,7 @@ export async function getStaticProps() {
     props: {
       siteSettings: siteSettingsData.data.themeGeneralSettings.site_settings,
       banner: bannerData.data.banner.nodes,
-      about: aboutData.data.about.nodes[0].about_acf.aboutOcr,
+      about: aboutData.data.about.nodes[0].about_acf,
       services: servicesData.data.services.nodes,
       portfolio: portfolioData.data.portfolio.nodes,
       reviews: reviewsData.data.reviews.nodes,

@@ -1,0 +1,6 @@
+.hero {
+  &__img, &__title {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+}

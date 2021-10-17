@@ -4,7 +4,6 @@ import Image from "next/image";
 
 export const Nav = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log(props, "site settings all the props");
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex grid items-center grid-cols-2 lg:grid-cols-3">
@@ -41,21 +40,11 @@ export const Nav = (props) => {
           href="/"
           aria-label="Company"
           title="Company"
-          className="inline-flex items-center lg:mx-auto"
+          className="flex items-center lg:mx-auto"
         >
           <Image src={props.logo} layout="fill" />
         </a>
-        <ul className="flex items-center hidden ml-auto space-x-8 lg:flex">
-          <li>
-            <a
-              href="/"
-              aria-label="Our Reviews"
-              title="Sign in"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-ocr-primary"
-            >
-              Reviews
-            </a>
-          </li>
+        <ul className="items-center hidden ml-auto space-x-8 lg:flex">
           <li>
             <a
               href="/"
