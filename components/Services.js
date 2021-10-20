@@ -1,27 +1,27 @@
+import Image from "next/dist/client/image";
 export const Services = (props) => {
+  console.log(props, "service props");
+  let serviceCount = 0;
+  let columnArray = []
 
-  console.log(props, 'service props')
-
-  
-
-// <div className="services">
-//         <ul>
-//           {props.services.map((s, i) => {
-//             const serviceName = s.service_acf.serviceName;
-//             return <li key={`service-${i}`}>{serviceName}</li>;
-//           })}
-//         </ul>
-//       </div>
+  // <div className="services">
+  //         <ul>
+  //           {props.services.map((s, i) => {
+  //             const serviceName = s.service_acf.serviceName;
+  //             return <li key={`service-${i}`}>{serviceName}</li>;
+  //           })}
+  //         </ul>
+  //       </div>
   return (
-    <div>
+    <div className="m-4">
       <div className="flex flex-col px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 lg:flex-row mt-8">
         <div className="mb-5 lg:w-1/3 lg:mb-0 lg:mr-20">
-          <h2 className="relative mb-4 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+          <h2 className="relative mb-4 font-sans text-3xl font-bold tracking-tight text-ocr-secondary sm:text-4xl sm:leading-none">
             <span className="relative inline-block">
               <svg
                 viewBox="0 0 52 24"
                 fill="currentColor"
-                className="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block"
+                className="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-ocr-secondary lg:w-32 lg:-ml-28 lg:-mt-10 sm:block"
               >
                 <defs>
                   <pattern
@@ -40,9 +40,8 @@ export const Services = (props) => {
                   height="24"
                 />
               </svg>
-              <span className="relative">The</span>
-            </span>{" "}
-            brown fox
+              <span className="relative text-black">Our Services</span>
+            </span>
           </h2>
           <p className="mb-4 text-gray-900 lg:mb-6">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -66,7 +65,7 @@ export const Services = (props) => {
         <div className="flex-grow pt-1">
           <div className="flex items-center mb-3">
             <span className="font-bold tracking-wide text-gray-900">
-              Categories
+              Services Offered
             </span>
             <span className="ml-1">
               <svg
@@ -85,152 +84,47 @@ export const Services = (props) => {
             </span>
           </div>
           <div className="grid grid-cols-2 row-gap-6 sm:grid-cols-4">
+            
             <ul className="space-y-2">
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Computers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Health
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Reference
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  World
-                </a>
-              </li>
+              {props.services.map((s, i) => {
+                const serviceName = s.service_acf.serviceName;
+                serviceCount++;
+                if (i < 4) {
+                  return <li key={`service-${i}`}>{serviceName}</li>;
+                }
+              })}
             </ul>
             <ul className="space-y-2">
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  eCommerce
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Business
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Video
-                </a>
-              </li>
+              {props.services.map((s, i) => {
+                const serviceName = s.service_acf.serviceName;
+                serviceCount++;
+                if (i > 4 && i < 9) {
+                  return <li key={`service-${i}`}>{serviceName}</li>;
+                }
+              })}
             </ul>
             <ul className="space-y-2">
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Brochure
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Nonprofit
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Educational
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Sports
-                </a>
-              </li>
+              {props.services.map((s, i) => {
+                const serviceName = s.service_acf.serviceName;
+                serviceCount++;
+                if (i >= 9) {
+                  return <li key={`service-${i}`}>{serviceName}</li>;
+                }
+              })}
             </ul>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Infopreneur
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Health
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Web
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="transition-colors duration-300 hover:text-deep-purple-accent-700"
-                >
-                  Personal
-                </a>
-              </li>
-            </ul>
+            
           </div>
         </div>
       </div>
-      <div className="relative">
-        <img
-          className="object-cover w-full h-56 sm:h-96"
+      <div className="relative w-full h-56">
+        <Image
+          layout="fill"
+          className="object-cover  sm:h-96"
           src="https://images.pexels.com/photos/3184419/pexels-photo-3184419.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-          alt=""
+          alt="#"
         />
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-50" />
+        <span className="absolute inset-0 bg-black opacity-40"></span>
+
       </div>
     </div>
   );

@@ -3,3 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*::selection {
+    @apply bg-ocr-secondary;
+    @apply text-ocr-white;
+  }

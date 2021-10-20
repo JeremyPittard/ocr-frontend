@@ -26,7 +26,7 @@ export const heroAnimations = () => {
     });
 
   function shiftImage() {
-    gsap.to(".img-shift", { scale: 1.1, duration: 15, yoyo: true, repeat: -1 });
+    gsap.to(".img-shift", { scale: 1.1,translateX: 15 ,duration: 15, yoyo: true, repeat: -1 });
   }
 };
 

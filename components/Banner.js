@@ -6,45 +6,46 @@ import { heroAnimations } from "../animations/animations";
 export const Banner = (props) => {
   useEffect(() => {
     heroAnimations();
+    console.log(props, 'this is them banner props yo')
   }, []);
 
   const theImage = props.banners[0].banner_acf.bannerImage.mediaItemUrl;
   const bannerText = props.banners[0].banner_acf.bannerText;
+  const theLogo = props.logo;
   return (
-    <div className="h-screen hero">
-      <div className="relative flex flex-col py-16 lg:pt-0 lg:flex-col lg:pb-0 sm:h-5/6">
-        <div className="flex flex-col items-start sm:h-full sm:justify-center w-full max-w-xl px-4 mx-auto lg:px-8 lg:max-w-screen-xl">
-          <div className="hero__title mb-16 lg:max-w-2xl lg:pr-5">
-            <div className="max-w-xl mb-6 sm:max-w-2xl">
-              <div>
-                <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-ocr-secondary text-white ">
-                  OCR Projects
-                </p>
-              </div>
-              <h1 className="max-w-lg font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none sm:max-w-2xl">
-                {bannerText}
-              </h1>
-            </div>
-            <div className="flex flex-col items-center md:flex-row">
-              <button
-                className="scroll inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-deep-purple-accent-700"
-                onClick={(e) => helpers.smoothScroll(e, "#aboutSection")}
-              >
-                Scroll
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="inset-y-0 right-0 w-full max-w-xl px-4 mx-auto lg:pl-8 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-1/2 lg:max-w-full lg:absolute xl:px-0">
+    <>
+      <section
+        className="hero relative text-white bg-center bg-no-repeat bg-cover mx-4 mb-4"
+        role="banner"
+      >
+        <div className="p-4">
           <Image
             layout="fill"
-            className="object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none sm:h-96 lg:h-full hero__img img-shift"
-            // src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+            className="object-cover w-full h-full hero__img img-shift"
             src={theImage}
-            alt=""
           />
         </div>
-      </div>
-    </div>
+        <span className="absolute inset-0 bg-black opacity-40"></span>
+        <div className="relative px-4 py-24 mx-auto max-w-screen-xl sm:py-36 sm:px-6 lg:px-8 lg:h-screen lg:flex lg:items-center">
+          <div className="hero__title max-w-xl text-center sm:text-left sm:max-w-5xl">
+            <Image src={theLogo} alt="OCR Projects" width='180' height='80'/>
+            <h1 className="text-3xl font-bold sm:text-5xl mb-4 uppercase">
+              {bannerText}
+            </h1>
+            <button
+              type="button"
+              className="scroll relative inline-block px-12 py-3 mt-8 overflow-hidden border-2 border-white transition-colors hover:border-sky-500 group"
+              onClick={(e) => helpers.smoothScroll(e, "#aboutSection")}
+            >
+              <span className="absolute inset-0 transition-transform origin-left transform scale-x-0 bg-sky-500 group-hover:scale-x-100"></span>
+
+              <span className="relative text-sm font-medium tracking-widest uppercase">
+                Learn More
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };

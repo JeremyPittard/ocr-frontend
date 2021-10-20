@@ -1,10 +1,10 @@
 export const Contact = () => {
   return (
-    <div className="bg-ocr-primary py-16">
+    <div className="bg-ocr-primary px-4 sm:px-0 py-16 mx-4">
       <div className="w-full max-w-xl xl:px-8 xl:w-5/12 mx-auto">
         <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
           <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-            Sign up for updates
+            Contact us
           </h3>
           <form>
             <div className="mb-1 sm:mb-2">
@@ -60,9 +60,6 @@ export const Contact = () => {
                 Subscribe
               </button>
             </div>
-            <p className="text-xs text-gray-600 sm:text-sm">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
           </form>
         </div>
       </div>

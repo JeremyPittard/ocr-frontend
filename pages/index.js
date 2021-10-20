@@ -13,7 +13,7 @@ const Home = (props) => {
   return (
     <>
       <Nav logo={props.siteSettings.siteLogo.mediaItemUrl}/>
-      <Banner banners={props.banner} />
+      <Banner banners={props.banner} logo={props.siteSettings.siteLogo.mediaItemUrl} />
       <About aboutText={props.about} />
       <Services services={props.services} />
       <Portfolio portfolio={props.portfolio}/>
