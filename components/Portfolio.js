@@ -17,6 +17,7 @@ export const Portfolio = (props) => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    infinite: false,
     // nextArrow: <SampleNextArrow />,s
     //   prevArrow: <SamplePrevArrow />
   };
@@ -43,6 +44,8 @@ export const Portfolio = (props) => {
 
   const filterPortfolio = (e, cat) => {
     e.preventDefault();
+    document.querySelectorAll('.portfolio .active').forEach(item => item.classList.remove('active'))
+    e.target.classList.add('active')
     if (cat == "all") {
       document
         .querySelectorAll(".hide")
@@ -99,7 +102,7 @@ export const Portfolio = (props) => {
                 href="#"
                 aria-label=""
                 onClick={(e) => filterPortfolio(e, "all")}
-                className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                className="active inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
                 All
                 <svg
