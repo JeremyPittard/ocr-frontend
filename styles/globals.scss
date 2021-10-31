@@ -1,4 +1,8 @@
-@use '../styles/components/banner.module.scss';
+@use './components/banner.module.scss';
+@use './vendors/vendors.scss';
+
+
+
 
 @tailwind base;
 @tailwind components;
