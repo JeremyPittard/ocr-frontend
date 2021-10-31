@@ -4,6 +4,7 @@ import Image from "next/dist/client/image";
 import { Fancybox } from "@fancyapps/ui";
 import { useEffect, useState } from "react";
 
+
 export const Portfolio = (props) => {
   const [galleryArray, setGalleryArray] = useState();
 
@@ -27,7 +28,7 @@ export const Portfolio = (props) => {
       const caption = portfolioItem.portfolioItem_acf.title;
 
       portfolioItem.portfolioItem_acf.gallery.forEach((galleryItem) => {
-        port.push({ src: galleryItem.mediaItemUrl, caption: caption});
+        port.push({ src: galleryItem.mediaItemUrl, caption: caption, type: 'image'});
       });   
      tempArr = [...tempArr, port]
     });
@@ -144,11 +145,13 @@ export const Portfolio = (props) => {
                 {galleryArray != null && galleryArray.map((p, i) => {
                   const imgUrl = p[0].src;
                   const imgText = p[0].caption;
+                  console.log(p)
                   return (
                     <div className="" key={`${imgUrl.replace(/ /g, "")}-${i}`}>
-                      <a
-                        href={imgUrl}
-                        data-fancybox={`${imgText.replace(/ /g, "")}-gallery`}
+                      <div
+                      onClick={() => Fancybox.show(p)}
+                        // href={imgUrl}
+                        // data-fancybox={`${imgText.replace(/ /g, "")}-gallery`}
                       >
                         <Image
                           className="rounded"
@@ -157,7 +160,7 @@ export const Portfolio = (props) => {
                           width={250}
                           alt="Person"
                         />
-                      </a>
+                      </div>
                       <div className="">
                         <p className="">{imgText}</p>
                       </div>
