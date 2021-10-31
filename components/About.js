@@ -9,7 +9,7 @@ export const About = (props) => {
           About&nbsp;
           <span className="relative px-1">
             <div className="absolute inset-x-0 bottom-0 h-3 transform -skew-x-12 bg-ocr-secondary"></div>
-            <span className="relative inline-block text-deep-purple-accent-400">
+            <span className="relative inline-block text-ocr-white">
               OCR Projects
             </span>
           </span>

@@ -55,52 +55,28 @@ export const scrollAbout = () => {
     });
 };
 
-export const scrollServices = () => {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".services",
-      start: "100px 80%",
-    },
-  });
 
-  tl.to(".services__heading", {
-    opacity: 1,
-    transform: "translateY(0)",
-    duration: 0.35,
-  })
-    .to(".services__content", {
-      opacity: 1,
-      transform: "translateY(0)",
-      duration: 0.35,
-    })
-    .to(".services__img", {
-      opacity: 1,
-      transform: "translateY(0)",
-      duration: 0.35,
-    });
-};
+// export const scrollContact = () => {
+//   const tl = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".contact",
+//       start: "100px 80%",
+//     },
+//   });
 
-export const scrollContact = () => {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".contact",
-      start: "100px 80%",
-    },
-  });
-
-  tl.to(".contact__heading", {
-    opacity: 1,
-    transform: "translateY(0)",
-    duration: 0.35,
-  })
-    .to(".contact__content", {
-      opacity: 1,
-      transform: "translateY(0)",
-      duration: 0.35,
-    })
-    .to(".contact__book", {
-      opacity: 1,
-      transform: "translateY(0)",
-      duration: 0.35,
-    });
-};
+//   tl.to(".contact__heading", {
+//     opacity: 1,
+//     transform: "translateY(0)",
+//     duration: 0.35,
+//   })
+//     .to(".contact__content", {
+//       opacity: 1,
+//       transform: "translateY(0)",
+//       duration: 0.35,
+//     })
+//     .to(".contact__book", {
+//       opacity: 1,
+//       transform: "translateY(0)",
+//       duration: 0.35,
+//     });
+// };

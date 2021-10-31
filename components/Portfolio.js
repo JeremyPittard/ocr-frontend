@@ -4,41 +4,62 @@ import Image from "next/dist/client/image";
 import { Fancybox } from "@fancyapps/ui";
 import { useEffect, useState } from "react";
 
-
 export const Portfolio = (props) => {
   const [galleryArray, setGalleryArray] = useState();
 
   useEffect(() => {
-    setGalleryArray(getGalleryItems())
+    console.log(props);
+    setGalleryArray(getGalleryItems());
   }, []);
-  
+
   const slickSettings = {
     dots: false,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1,
-    // nextArrow: <SampleNextArrow />,
+    slidesToScroll: 3,
+    // nextArrow: <SampleNextArrow />,s
     //   prevArrow: <SamplePrevArrow />
-  }; 
+  };
+  1;
   const getGalleryItems = () => {
-    let tempArr= []  ; 
-    
+    let tempArr = [];
+
     props.portfolio.forEach((portfolioItem) => {
       let port = [];
       const caption = portfolioItem.portfolioItem_acf.title;
-
+      const category = portfolioItem.portfolioItem_acf.category;
       portfolioItem.portfolioItem_acf.gallery.forEach((galleryItem) => {
-        port.push({ src: galleryItem.mediaItemUrl, caption: caption, type: 'image'});
-      });   
-     tempArr = [...tempArr, port]
+        port.push({
+          src: galleryItem.mediaItemUrl,
+          caption: caption,
+          type: "image",
+          category: category,
+        });
+      });
+      tempArr = [...tempArr, port];
     });
-    return(tempArr)
-  }; 
+    return tempArr;
+  };
 
-  
+  const filterPortfolio = (e, cat) => {
+    e.preventDefault();
+    if (cat == "all") {
+      document
+        .querySelectorAll(".hide")
+        .forEach((hiddenItem) => hiddenItem.classList.remove("hide"));
+    } else {
+      document
+        .querySelectorAll(".portfolio__item")
+        .forEach((port) =>
+          !port.classList.contains(cat)
+            ? port.parentElement.parentElement.classList.add("hide")
+            : port.parentElement.parentElement.classList.remove("hide")
+        );
+    }
+  };
 
   return (
-    <>
+    <section className="portfolio" id="portfolio">
       <div className="m-4">
         <div className="flex flex-col px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 lg:flex-row mt-8">
           <div className="mb-5 lg:w-1/3 lg:mb-0 lg:mr-20">
@@ -75,8 +96,9 @@ export const Portfolio = (props) => {
             </p>
             <div className="flex flex-col">
               <a
-                href="/"
+                href="#"
                 aria-label=""
+                onClick={(e) => filterPortfolio(e, "all")}
                 className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
                 All
@@ -89,7 +111,8 @@ export const Portfolio = (props) => {
                 </svg>
               </a>
               <a
-                href="/"
+                href="#"
+                onClick={(e) => filterPortfolio(e, "office")}
                 aria-label=""
                 className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
@@ -103,7 +126,8 @@ export const Portfolio = (props) => {
                 </svg>
               </a>
               <a
-                href="/"
+                href="#"
+                onClick={(e) => filterPortfolio(e, "commercial")}
                 aria-label=""
                 className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
@@ -117,8 +141,8 @@ export const Portfolio = (props) => {
                 </svg>
               </a>
               <a
-                href="/"
-                aria-label=""
+                href="#"
+                onClick={(e) => filterPortfolio(e, "residential")}
                 className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
                 Residential
@@ -132,46 +156,45 @@ export const Portfolio = (props) => {
               </a>
             </div>
           </div>
-          {/* {galleryArray != null && 
-          galleryArray.map(thing => {
-            console.log(galleryArray, 'array')
-            console.log(thing, 'thing')
-            return <h1>{thing[0].src}</h1>
-          })
-          } */}
           <div className="w-2/3">
             <div>
               <Slider {...slickSettings}>
-                {galleryArray != null && galleryArray.map((p, i) => {
-                  const imgUrl = p[0].src;
-                  const imgText = p[0].caption;
-                  console.log(p)
-                  return (
-                    <div className="" key={`${imgUrl.replace(/ /g, "")}-${i}`}>
+                {galleryArray != null &&
+                  galleryArray.map((p, i) => {
+                    const imgUrl = p[0].src;
+                    const imgText = p[0].caption;
+                    const catString = p[0].category
+                      .map((cat) => cat.name.toLowerCase())
+                      .toString()
+                      .replace(/,/g, " ");
+                    return (
                       <div
-                      onClick={() => Fancybox.show(p)}
-                        // href={imgUrl}
-                        // data-fancybox={`${imgText.replace(/ /g, "")}-gallery`}
+                        key={`${imgUrl.replace(/ /g, "")}-${i}`}
+                        className={`portfolio__item ${catString}`}
                       >
-                        <Image
-                          className="rounded"
-                          src={imgUrl}
-                          height={250}
-                          width={250}
-                          alt="Person"
-                        />
+                        <button
+                          className="p-1"
+                          onClick={() => Fancybox.show(p)}
+                        >
+                          <Image
+                            className="rounded"
+                            src={imgUrl}
+                            height={500}
+                            width={500}
+                            alt="#"
+                          />
+                        </button>
+                        <div className="">
+                          <p className="">{imgText}</p>
+                        </div>
                       </div>
-                      <div className="">
-                        <p className="">{imgText}</p>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </Slider>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 };
