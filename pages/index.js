@@ -7,18 +7,25 @@ import { About } from "../components/About";
 import { Footer } from "../components/Footer";
 import { Contact } from "../components/Contact";
 import { Portfolio } from "../components/Portfolio";
+import SiteHead from "../components/SiteMeta";
 
 const Home = (props) => {
-  console.log(props.siteSettings, 'site-settings')
   return (
     <>
-      <Nav logo={props.siteSettings.siteLogo.mediaItemUrl}/>
-      <Banner banners={props.banner} logo={props.siteSettings.siteLogo.mediaItemUrl} />
+      <SiteHead settings={props.siteSettings} />
+      <Nav logo={props.siteSettings.siteLogo.mediaItemUrl} />
+      <Banner
+        banners={props.banner}
+        logo={props.siteSettings.siteLogo.mediaItemUrl}
+      />
       <About aboutText={props.about} />
-      <Services services={props.services} />
-      <Portfolio portfolio={props.portfolio}/>
+      <Services
+        services={props.services}
+        banner={props.siteSettings.pageBreakBanner.mediaItemUrl}
+      />
+      <Portfolio portfolio={props.portfolio} />
       <Contact />
-      <Footer />
+      <Footer settings={props.siteSettings}/>
     </>
   );
 };
@@ -46,25 +53,30 @@ export async function getStaticProps() {
 
   const siteSettingsData = await client.query({
     query: gql`
-    {
-      themeGeneralSettings {
-        site_settings {
-          abn
-          contactEmail
-          contactPhone
-          facebookLink
-          fieldGroupName
-          instagramLink
-          linkedInLink
-          siteLogo {
-            mediaItemUrl
+      {
+        themeGeneralSettings {
+          site_settings {
+            abn
+            seoTitle
+            contactEmail
+            contactPhone
+            facebookLink
+            fieldGroupName
+            instagramLink
+            priceRange
+            linkedInLink
+            address
+            siteLogo {
+              mediaItemUrl
+            }
+            pageBreakBanner {
+              mediaItemUrl
+            }
           }
         }
       }
-    }
-  `
-  
-  })
+    `,
+  });
 
   const bannerData = await client.query({
     query: gql`

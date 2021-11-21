@@ -16,14 +16,14 @@ export const heroAnimations = () => {
       transform: "trasnlateX(0)",
       onComplete: shiftImage,
     })
-    .to(".scroll", { opacity: 1, delay: 5 })
-    .to(".scroll", {
-      transform: "translateY(-20px)",
-      yoyo: true,
-      repeat: -1,
-      yoyoEase: Bounce.easeOut,
-      duration: 0.75,
-    });
+    // .to(".scroll", { opacity: 1, delay: 5 })
+    // .to(".scroll", {
+    //   transform: "translateY(-20px)",
+    //   yoyo: true,
+    //   repeat: -1,
+    //   yoyoEase: Bounce.easeOut,
+    //   duration: 0.75,
+    // });
 
   function shiftImage() {
     gsap.to(".img-shift", { scale: 1.1,translateX: 15 ,duration: 15, yoyo: true, repeat: -1 });

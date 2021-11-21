@@ -1,10 +1,9 @@
 export const About = (props) => {
-  console.log(props, "about props");
   let aboutText = props.aboutText.aboutOcr;
   let aboutImage = props.aboutText.image;
   return (
     <div id="aboutSection" className="bg-ocr-primary mx-4">
-      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <div className="px-4 py-8 md:py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
           About&nbsp;
           <span className="relative px-1">
@@ -18,7 +17,7 @@ export const About = (props) => {
           <div className="flex flex-col justify-center">
             <div className="max-w-xl mb-6">
               <div
-                className="text-base text-gray-700 md:text-lg"
+                className="text-base text-gray-900 md:text-lg"
                 dangerouslySetInnerHTML={{ __html: aboutText }}
               ></div>
             </div>

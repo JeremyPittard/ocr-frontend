@@ -6,20 +6,18 @@ import { useEffect, useState } from "react";
 
 export const Portfolio = (props) => {
   const [galleryArray, setGalleryArray] = useState();
+  const [activeFilter, setActiveFilter] = useState("all");
 
   useEffect(() => {
-    console.log(props);
     setGalleryArray(getGalleryItems());
   }, []);
 
   const slickSettings = {
-    dots: false,
+    dots: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
     infinite: false,
-    // nextArrow: <SampleNextArrow />,s
-    //   prevArrow: <SamplePrevArrow />
   };
   1;
   const getGalleryItems = () => {
@@ -44,27 +42,24 @@ export const Portfolio = (props) => {
 
   const filterPortfolio = (e, cat) => {
     e.preventDefault();
-    document.querySelectorAll('.portfolio .active').forEach(item => item.classList.remove('active'))
-    e.target.classList.add('active')
+    let baseArr = getGalleryItems();
+    let tempArr = [];
+
     if (cat == "all") {
-      document
-        .querySelectorAll(".hide")
-        .forEach((hiddenItem) => hiddenItem.classList.remove("hide"));
+      tempArr = baseArr;
     } else {
-      document
-        .querySelectorAll(".portfolio__item")
-        .forEach((port) =>
-          !port.classList.contains(cat)
-            ? port.parentElement.parentElement.classList.add("hide")
-            : port.parentElement.parentElement.classList.remove("hide")
-        );
+      baseArr.forEach((i) =>
+        i[0].category.forEach((c) => c.name == cat && tempArr.push(i))
+      );
     }
+    setActiveFilter(cat);
+    setGalleryArray(tempArr);
   };
 
   return (
     <section className="portfolio" id="portfolio">
-      <div className="m-4">
-        <div className="flex flex-col px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 lg:flex-row mt-8">
+      <div className="p-4">
+        <div className="flex flex-col px-4 py-8 md:py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 lg:flex-row md:mt-8">
           <div className="mb-5 lg:w-1/3 lg:mb-0 lg:mr-20">
             <h2 className="relative mb-4 font-sans text-3xl font-bold tracking-tight text-ocr-secondary sm:text-4xl sm:leading-none">
               <span className="relative inline-block">
@@ -93,69 +88,81 @@ export const Portfolio = (props) => {
                 <span className="relative text-black">Our Recent Work</span>
               </span>
             </h2>
-            <p className="mb-4 text-gray-900 lg:mb-6">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              laudantium, totam rem aperiam, eaque ipsa quae explicabo.
-            </p>
             <div className="flex flex-col">
               <a
                 href="#"
                 aria-label=""
                 onClick={(e) => filterPortfolio(e, "all")}
-                className="active inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                className={`${
+                  activeFilter === "all" ? "active" : ""
+                } text-xl inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800`}
               >
                 All
-                <svg
-                  className="inline-block w-3 ml-2"
-                  fill="currentColor"
-                  viewBox="0 0 12 12"
-                >
-                  <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
-                </svg>
+                {activeFilter === "all" && (
+                  <svg
+                    className="inline-block w-3 ml-2"
+                    fill="currentColor"
+                    viewBox="0 0 12 12"
+                  >
+                    <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
+                  </svg>
+                )}
               </a>
               <a
                 href="#"
-                onClick={(e) => filterPortfolio(e, "office")}
+                onClick={(e) => filterPortfolio(e, "Office")}
                 aria-label=""
-                className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                className={`${
+                  activeFilter === "Office" ? "active" : ""
+                } text-xl inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800`}
               >
                 Office
-                <svg
-                  className="inline-block w-3 ml-2"
-                  fill="currentColor"
-                  viewBox="0 0 12 12"
-                >
-                  <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
-                </svg>
+                {activeFilter === "Office" && (
+                  <svg
+                    className="inline-block w-3 ml-2"
+                    fill="currentColor"
+                    viewBox="0 0 12 12"
+                  >
+                    <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
+                  </svg>
+                )}
               </a>
               <a
                 href="#"
-                onClick={(e) => filterPortfolio(e, "commercial")}
+                onClick={(e) => filterPortfolio(e, "Commercial")}
                 aria-label=""
-                className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                className={`${
+                  activeFilter === "Commercial" ? "active" : ""
+                } text-xl inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800`}
               >
                 Commercial
-                <svg
-                  className="inline-block w-3 ml-2"
-                  fill="currentColor"
-                  viewBox="0 0 12 12"
-                >
-                  <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
-                </svg>
+                {activeFilter === "Commercial" && (
+                  <svg
+                    className="inline-block w-3 ml-2"
+                    fill="currentColor"
+                    viewBox="0 0 12 12"
+                  >
+                    <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
+                  </svg>
+                )}
               </a>
               <a
                 href="#"
-                onClick={(e) => filterPortfolio(e, "residential")}
-                className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                onClick={(e) => filterPortfolio(e, "Residential")}
+                className={`${
+                  activeFilter === "Residential" ? "active" : ""
+                } text-xl inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800`}
               >
                 Residential
-                <svg
-                  className="inline-block w-3 ml-2"
-                  fill="currentColor"
-                  viewBox="0 0 12 12"
-                >
-                  <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
-                </svg>
+                {activeFilter === "Residential" && (
+                  <svg
+                    className="inline-block w-3 ml-2"
+                    fill="currentColor"
+                    viewBox="0 0 12 12"
+                  >
+                    <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
+                  </svg>
+                )}
               </a>
             </div>
           </div>
@@ -188,7 +195,7 @@ export const Portfolio = (props) => {
                           />
                         </button>
                         <div className="">
-                          <p className="">{imgText}</p>
+                          <p className="text-center">{imgText}</p>
                         </div>
                       </div>
                     );

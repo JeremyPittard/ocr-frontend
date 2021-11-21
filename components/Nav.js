@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 
 export const Nav = (props) => {
@@ -49,10 +48,10 @@ export const Nav = (props) => {
             <li>
               <a
                 href="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-ocr-secondary transition duration-200 rounded shadow-md bg-ocr-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Call"
+                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-ocr-white transition duration-200 rounded shadow-md bg-ocr-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                aria-label="Get In Touch"
               >
-                Call
+                Get In Touch
               </a>
             </li>
           </ul>
@@ -111,24 +110,30 @@ export const Nav = (props) => {
                       </li>
                       <li>
                         <a
-                          href="/"
-                          aria-label="Our product"
-                          title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          href="#About"
+                          aria-label="About OCR Projects"
+                          className="font-medium tracking-wide text-ocr-text transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
-                          Features
+                          Services
                         </a>
                       </li>
                       <li>
                         <a
-                          href="/"
-                          aria-label="Product pricing"
-                          title="Product pricing"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          href="#About"
+                          aria-label="About OCR Projects"
+                          className="font-medium tracking-wide text-ocr-text transition-colors duration-200 hover:text-deep-purple-accent-400"
                         >
-                          Pricing
+                          Portfolio
                         </a>
                       </li>
+                      <a
+                href="/"
+                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-ocr-white transition duration-200 rounded shadow-md bg-ocr-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                aria-label="Get In Touch"
+              >
+                Get In Touch
+              </a>
+                
                     </ul>
                   </nav>
                 </div>

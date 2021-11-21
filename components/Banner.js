@@ -6,7 +6,6 @@ import { heroAnimations } from "../animations/animations";
 export const Banner = (props) => {
   useEffect(() => {
     heroAnimations();
-    console.log(props, 'this is them banner props yo')
   }, []);
 
   const theImage = props.banners[0].banner_acf.bannerImage.mediaItemUrl;
