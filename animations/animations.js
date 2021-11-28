@@ -2,7 +2,7 @@ import gsap, { Bounce } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export const heroAnimations = () => {
-  let tl = gsap.timeline({
+  const tl = gsap.timeline({
     defaults: {
       duration: 0.4,
       ease: "power1.inOut",
@@ -30,7 +30,7 @@ export const heroAnimations = () => {
 };
 
 export const loadingAnimation = () => {
-  let tl = gsap.timeline({
+  const tl = gsap.timeline({
     defaults: {
       duration: 0.25,
       ease: "power1.inOut",
@@ -102,7 +102,7 @@ export const scrollServices = () => {
       opacity: 1,
       transform: "translateY(0)",
       duration: 0.35,
-    })
+    });
 };
 
 export const scrollPortfolio = () => {
@@ -127,7 +127,7 @@ export const scrollPortfolio = () => {
       opacity: 1,
       transform: "translateY(0)",
       duration: 0.35,
-    })
+    });
 };
 
 export const scrollContact = () => {
@@ -142,10 +142,21 @@ export const scrollContact = () => {
     opacity: 1,
     transform: "translateY(0)",
     duration: 0.35,
-  })
-    .to(".contact__form", {
-      opacity: 1,
-      transform: "translateY(0)",
-      duration: 0.35,
-    })
+  }).to(".contact__form", {
+    opacity: 1,
+    transform: "translateY(0)",
+    duration: 0.35,
+  });
+};
+
+export const theOldFadeAndSwitch = () => {
+  const tl = gsap.timeline({
+    defaults: {
+      ease: "power1.inOut",
+    },
+  });
+  gsap.set('.portfolio__content', {opacity: 0})
+    
+
+    tl.to('.portfolio__content', {opacity: 1, delay: .3})
 };

@@ -3,7 +3,7 @@ import Image from "next/dist/client/image";
 
 import { Fancybox } from "@fancyapps/ui";
 import { useEffect, useState, useRef } from "react";
-import { scrollPortfolio } from "../animations/animations";
+import { scrollPortfolio, theOldFadeAndSwitch } from "../animations/animations";
 
 export const Portfolio = (props) => {
   const [galleryArray, setGalleryArray] = useState();
@@ -14,7 +14,7 @@ export const Portfolio = (props) => {
     scrollPortfolio();
   }, []);
 
-  const slider = useRef(null)
+  const slider = useRef(null);
 
   const slickSettings = {
     dots: true,
@@ -22,8 +22,26 @@ export const Portfolio = (props) => {
     slidesToShow: 3,
     slidesToScroll: 3,
     infinite: false,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          arrows: false,
+        }
+      }
+    ]
   };
-  1;
   const getGalleryItems = () => {
     let tempArr = [];
 
@@ -46,6 +64,7 @@ export const Portfolio = (props) => {
 
   const filterPortfolio = (e, cat) => {
     e.preventDefault();
+    theOldFadeAndSwitch();
     let baseArr = getGalleryItems();
     let tempArr = [];
 
@@ -58,7 +77,7 @@ export const Portfolio = (props) => {
     }
     setActiveFilter(cat);
     setGalleryArray(tempArr);
-    slider.current.slickGoTo(0)
+    slider.current.slickGoTo(0);
   };
 
   return (
@@ -66,7 +85,7 @@ export const Portfolio = (props) => {
       <div className="p-4">
         <div className="flex flex-col px-4 py-8 md:py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 lg:flex-row md:mt-8">
           <div className="mb-5 lg:w-1/3 lg:mb-0 lg:mr-20">
-            <h2 className="portfolio__heading opacity-0 relative mb-4 font-sans text-3xl font-bold text-ocr-secondary sm:text-4xl sm:leading-none">
+            <h2 className="portfolio__heading opacity-0 -translate-y-3 relative mb-4 font-sans text-3xl font-bold text-ocr-secondary sm:text-4xl sm:leading-none">
               <span className="relative inline-block">
                 <svg
                   viewBox="0 0 52 24"
@@ -93,7 +112,7 @@ export const Portfolio = (props) => {
                 <span className="relative text-black">Our Recent Work</span>
               </span>
             </h2>
-            <div className="portfolio__heading opacity-0 flex flex-col">
+            <div className="portfolio__heading opacity-0 -translate-y-3 flex flex-col ml-9 md:ml-0">
               <a
                 href="#"
                 aria-label=""
@@ -171,7 +190,7 @@ export const Portfolio = (props) => {
               </a>
             </div>
           </div>
-          <div className="portfolio__content opacity-0 w-2/3">
+          <div className="portfolio__content opacity-0 -translate-y-3  md:w-2/3">
             <div>
               <Slider ref={slider} {...slickSettings}>
                 {galleryArray != null &&
@@ -197,6 +216,8 @@ export const Portfolio = (props) => {
                             height={500}
                             width={500}
                             alt="#"
+                            layout="intrinsic"
+                            objectFit="cover"
                           />
                         </button>
                         <div className="">

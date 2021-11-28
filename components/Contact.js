@@ -30,13 +30,12 @@ export const Contact = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        // Determine if the submission is not valid
-        console.log(response);
+        // console.log(response);
         setFormState(2);
-        // Handle the happy path
       })
       .catch((error) => {
         console.log(error);
+        setFormState(0)
       });
   };
 
@@ -62,7 +61,6 @@ export const Contact = () => {
     }
 
     setData({ ...tempObj });
-    console.log(data);
   };
 
   return (

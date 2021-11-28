@@ -29,12 +29,19 @@
     }
 
     &.slick-prev {
+      @media(min-width: 640px) {
+
         left: -48px;
+      }
     }
 
     &.slick-next {
+      @media(min-width: 640px) {
+
         right:  -36px;
+      }
     }
+
   }
 
   .active {

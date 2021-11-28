@@ -2,4 +2,7 @@
     p {
         @apply mb-3;
     }
+    p:last-of-type {
+        margin-bottom: 0;
+    }
 }
