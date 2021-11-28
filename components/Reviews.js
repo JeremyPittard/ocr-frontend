@@ -31,7 +31,7 @@ export const Reviews = (props) => {
             <p className="mb-2 text-xs font-semibold tracking-wide text-gray-800 uppercase">
               New History
             </p>
-            <h2 className="mb-4 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+            <h2 className="mb-4 font-sans text-3xl font-bold text-gray-900 sm:text-4xl sm:leading-none">
               Cheese on toast tale
             </h2>
             <p className="text-base text-gray-700 md:text-lg">

@@ -15,7 +15,7 @@ const helpers = {
     e.preventDefault();
     const destinationElement = document.querySelector(destination);
     gsap.to(window, {
-      scrollTo: destination,
+      scrollTo: {y: destination, offsetY: 120} ,
       duration: 0.3,
       onComplete: setFocus,
     });

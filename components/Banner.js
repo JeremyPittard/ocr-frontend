@@ -33,7 +33,7 @@ export const Banner = (props) => {
             </h1>
             <button
               type="button"
-              className="scroll relative inline-block px-12 py-3 mt-8 overflow-hidden border-2 border-white transition-colors hover:border-sky-500 group"
+              className="scroll relative inline-block px-12 py-3 mt-8 overflow-hidden border-2 border-white transition-colors hover:bg-ocr-primary hover:border-ocr-primary"
               onClick={(e) => helpers.smoothScroll(e, "#aboutSection")}
             >
               <span className="absolute inset-0 transition-transform origin-left transform scale-x-0 bg-sky-500 group-hover:scale-x-100"></span>

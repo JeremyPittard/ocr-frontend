@@ -1,9 +1,9 @@
 @use './components/banner.module.scss';
 @use './components/portfolio.module.scss';
+@use './components//loader.module.scss';
+@use './components//contact.module.scss';
+@use './components//about.module.scss';
 @use './vendors/vendors.scss';
-
-
-
 
 @tailwind base;
 @tailwind components;

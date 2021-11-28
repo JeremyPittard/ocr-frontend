@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import helpers from "../utils/helpers";
 
 export const Nav = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,9 +11,10 @@ export const Nav = (props) => {
           <ul className="flex items-center hidden space-x-8 lg:flex">
             <li>
               <a
-                href="#about"
+                href="#aboutSection"
                 aria-label="About OCR Projects"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-ocr-primary"
+                onClick={(e) => helpers.smoothScroll(e, "#aboutSection")}
               >
                 About
               </a>
@@ -22,6 +24,9 @@ export const Nav = (props) => {
                 href="/"
                 aria-label="Our Services"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-ocr-primary"
+                onClick={(e) =>
+                  helpers.smoothScroll(e, "#servicesSection")
+                }
               >
                 Services
               </a>
@@ -31,6 +36,9 @@ export const Nav = (props) => {
                 href="/"
                 aria-label="Our Portfolio"
                 className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-ocr-primary"
+                onClick={(e) =>
+                  helpers.smoothScroll(e, "#portfolioSection")
+                }
               >
                 Portfolio
               </a>
@@ -48,8 +56,11 @@ export const Nav = (props) => {
             <li>
               <a
                 href="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-ocr-white transition duration-200 rounded shadow-md bg-ocr-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-ocr-white transition duration-200 rounded shadow-md bg-ocr-primary hover:bg-ocr-secondary hover:border-ocr-secondary focus:shadow-outline focus:outline-none"
                 aria-label="Get In Touch"
+                onClick={(e) =>
+                  helpers.smoothScroll(e, "#contactSection")
+                }
               >
                 Get In Touch
               </a>
@@ -101,39 +112,49 @@ export const Nav = (props) => {
                     <ul className="space-y-4">
                       <li>
                         <a
-                          href="#About"
+                          href="#aboutSection"
                           aria-label="About OCR Projects"
                           className="font-medium tracking-wide text-ocr-text transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          onClick={(e) =>
+                            helpers.smoothScroll(e, "#aboutSection")
+                          }
                         >
                           About
                         </a>
                       </li>
                       <li>
                         <a
-                          href="#About"
-                          aria-label="About OCR Projects"
+                          href="#servicesSection"
+                          aria-label="Services"
                           className="font-medium tracking-wide text-ocr-text transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          onClick={(e) =>
+                            helpers.smoothScroll(e, "#servicesSection")
+                          }
                         >
                           Services
                         </a>
                       </li>
                       <li>
                         <a
-                          href="#About"
-                          aria-label="About OCR Projects"
+                          href="#portfolioSection"
+                          aria-label="Portfolio"
                           className="font-medium tracking-wide text-ocr-text transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          onClick={(e) => helpers.smoothScroll(e, "#portfolioSection")}
+
                         >
                           Portfolio
                         </a>
                       </li>
                       <a
-                href="/"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-ocr-white transition duration-200 rounded shadow-md bg-ocr-primary hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                aria-label="Get In Touch"
-              >
-                Get In Touch
-              </a>
-                
+                        href="/"
+                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-ocr-white transition duration-200 rounded shadow-md bg-ocr-primary hover:bg-ocr-secondary hover:border-ocr-secondary focus:shadow-outline focus:outline-none"
+                        aria-label="Get In Touch"
+                        onClick={(e) =>
+                          helpers.smoothScroll(e, "#contactSection")
+                        }
+                      >
+                        Get In Touch
+                      </a>
                     </ul>
                   </nav>
                 </div>

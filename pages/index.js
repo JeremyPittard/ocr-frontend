@@ -9,6 +9,13 @@ import { Contact } from "../components/Contact";
 import { Portfolio } from "../components/Portfolio";
 import SiteHead from "../components/SiteMeta";
 
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.core.globals("ScrollTrigger", ScrollTrigger);
+
 const Home = (props) => {
   return (
     <>

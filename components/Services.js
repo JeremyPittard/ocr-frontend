@@ -1,14 +1,21 @@
 import Image from "next/image";
+import { scrollServices } from "../animations/animations";
+import { useEffect } from "react";
+
 export const Services = (props) => {
   let serviceCount = 0;
   let columnArray = []
 
+  useEffect(() => {
+    scrollServices();
+  }, [])
+
 
   return (
-    <div className="m-4">
+    <div className="m-4" id="servicesSection" class="opacity-0">
       <div className="flex flex-col px-4 py-8 md:py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 lg:flex-row md:mt-8">
         <div className="mb-5 lg:w-1/3 lg:mb-0 lg:mr-20">
-          <h2 className="relative mb-4 font-sans text-3xl font-bold tracking-tight text-ocr-secondary sm:text-4xl sm:leading-none">
+          <h2 className="services__heading -translate-y-3 opacity-0 relative mb-4 font-sans text-3xl font-bold text-ocr-secondary sm:text-4xl sm:leading-none">
             <span className="relative inline-block">
               <svg
                 viewBox="0 0 52 24"
@@ -37,9 +44,9 @@ export const Services = (props) => {
           </h2>
          
         </div>
-        <div className="flex-grow pt-1">
+        <div className="services__content opacity-0 -translate-y-3 flex-grow pt-1">
           <div className="flex items-center mb-3">
-            <span className="font-bold tracking-wide text-gray-900">
+            <span className="font-bold text-gray-900">
               Services Offered
             </span>
             <span className="ml-1">
@@ -60,30 +67,30 @@ export const Services = (props) => {
           </div>
           <div className="grid grid-cols-2 row-gap-6 sm:grid-cols-4">
             
-            <ul className="space-y-2">
+            <ul className="space-y-2 mx-1">
               {props.services.map((s, i) => {
                 const serviceName = s.service_acf.serviceName;
                 serviceCount++;
                 if (i < 4) {
-                  return <li key={`service-${i}`}>{serviceName}</li>;
+                  return <li className="text-xl" key={`service-${i}`}>{serviceName}</li>;
                 }
               })}
             </ul>
-            <ul className="space-y-2">
+            <ul className="space-y-2 mx-1 md:mx-2">
               {props.services.map((s, i) => {
                 const serviceName = s.service_acf.serviceName;
                 serviceCount++;
                 if (i > 4 && i < 9) {
-                  return <li key={`service-${i}`}>{serviceName}</li>;
+                  return <li className="text-xl" key={`service-${i}`}>{serviceName}</li>;
                 }
               })}
             </ul>
-            <ul className="space-y-2">
+            <ul className="mx-1 space-y-2">
               {props.services.map((s, i) => {
                 const serviceName = s.service_acf.serviceName;
                 serviceCount++;
                 if (i >= 9) {
-                  return <li key={`service-${i}`}>{serviceName}</li>;
+                  return <li className="text-xl" key={`service-${i}`}>{serviceName}</li>;
                 }
               })}
             </ul>
@@ -91,7 +98,7 @@ export const Services = (props) => {
           </div>
         </div>
       </div>
-      <div className="relative w-full h-56">
+      <div className="services__img -translate-y-3 opacity-0 relative w-full h-56">
         <Image
           layout="fill"
           className="object-cover  sm:h-96"

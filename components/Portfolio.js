@@ -3,6 +3,7 @@ import Image from "next/dist/client/image";
 
 import { Fancybox } from "@fancyapps/ui";
 import { useEffect, useState, useRef } from "react";
+import { scrollPortfolio } from "../animations/animations";
 
 export const Portfolio = (props) => {
   const [galleryArray, setGalleryArray] = useState();
@@ -10,6 +11,7 @@ export const Portfolio = (props) => {
 
   useEffect(() => {
     setGalleryArray(getGalleryItems());
+    scrollPortfolio();
   }, []);
 
   const slider = useRef(null)
@@ -60,11 +62,11 @@ export const Portfolio = (props) => {
   };
 
   return (
-    <section className="portfolio" id="portfolio">
+    <section className="portfolio" id="portfolioSection">
       <div className="p-4">
         <div className="flex flex-col px-4 py-8 md:py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 lg:flex-row md:mt-8">
           <div className="mb-5 lg:w-1/3 lg:mb-0 lg:mr-20">
-            <h2 className="relative mb-4 font-sans text-3xl font-bold tracking-tight text-ocr-secondary sm:text-4xl sm:leading-none">
+            <h2 className="portfolio__heading opacity-0 relative mb-4 font-sans text-3xl font-bold text-ocr-secondary sm:text-4xl sm:leading-none">
               <span className="relative inline-block">
                 <svg
                   viewBox="0 0 52 24"
@@ -91,7 +93,7 @@ export const Portfolio = (props) => {
                 <span className="relative text-black">Our Recent Work</span>
               </span>
             </h2>
-            <div className="flex flex-col">
+            <div className="portfolio__heading opacity-0 flex flex-col">
               <a
                 href="#"
                 aria-label=""
@@ -169,7 +171,7 @@ export const Portfolio = (props) => {
               </a>
             </div>
           </div>
-          <div className="w-2/3">
+          <div className="portfolio__content opacity-0 w-2/3">
             <div>
               <Slider ref={slider} {...slickSettings}>
                 {galleryArray != null &&
