@@ -40,9 +40,9 @@ export const loadingAnimation = () => {
     },
   });
 
-  tl.to(".load-1", { translateY: -10 })
-    .to(".load-2", { translateY: -10 })
-    .to(".load-3", { translateY: -10 });
+  tl.to(".load-1", { translateY: -10 }, '-=0.15')
+    .to(".load-2", { translateY: -10 }, '-=0.15')
+    .to(".load-3", { translateY: -10 }, '-=0.15');
 };
 
 export const scrollAbout = () => {
@@ -56,7 +56,7 @@ export const scrollAbout = () => {
   tl.to("#aboutSection", {
     opacity: 1,
     transform: "translateY(0)",
-    duration: 0.35,
+    duration: 0.2,
   })
     .to(".about__heading", {
       opacity: 1,
@@ -86,7 +86,7 @@ export const scrollServices = () => {
   tl.to("#servicesSection", {
     opacity: 1,
     transform: "translateY(0)",
-    duration: 0.35,
+    duration: 0,
   })
     .to(".services__heading", {
       opacity: 1,
@@ -116,7 +116,7 @@ export const scrollPortfolio = () => {
   tl.to("#portfolioSection", {
     opacity: 1,
     transform: "translateY(0)",
-    duration: 0.35,
+    duration: 0,
   })
     .to(".portfolio__heading", {
       opacity: 1,
@@ -141,7 +141,7 @@ export const scrollContact = () => {
   tl.to("#contactSection", {
     opacity: 1,
     transform: "translateY(0)",
-    duration: 0.35,
+    duration: 0.2,
   }).to(".contact__form", {
     opacity: 1,
     transform: "translateY(0)",

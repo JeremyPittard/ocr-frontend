@@ -38,6 +38,7 @@ export const Portfolio = (props) => {
           slidesToScroll: 1,
           dots: false,
           arrows: false,
+          autoplay: true
         }
       }
     ]

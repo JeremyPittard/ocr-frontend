@@ -67,7 +67,7 @@ export const Services = (props) => {
           </div>
           <div className="block md:grid grid-cols-2 row-gap-6 sm:grid-cols-4">
             
-            <ul className="space-y-2 mx-1">
+            <ul className="space-y-2 mx-1 list-disc">
               {props.services.map((s, i) => {
                 const serviceName = s.service_acf.serviceName;
                 serviceCount++;
@@ -76,7 +76,7 @@ export const Services = (props) => {
                 }
               })}
             </ul>
-            <ul className="space-y-2 mx-1 md:mx-2">
+            <ul className="space-y-2 mx-1 md:mx-2 list-disc">
               {props.services.map((s, i) => {
                 const serviceName = s.service_acf.serviceName;
                 serviceCount++;
@@ -85,7 +85,7 @@ export const Services = (props) => {
                 }
               })}
             </ul>
-            <ul className="mx-1 space-y-2">
+            <ul className="mx-1 space-y-2 list-disc">
               {props.services.map((s, i) => {
                 const serviceName = s.service_acf.serviceName;
                 serviceCount++;
@@ -98,10 +98,11 @@ export const Services = (props) => {
           </div>
         </div>
       </div>
-      <div className="services__img -translate-y-3 opacity-0 relative w-full h-56">
+      <div className="services__img -translate-y-3 mx-4 opacity-0 relative h-56">
         <Image
           layout="fill"
-          className="object-cover  sm:h-96"
+          className="sm:h-96"
+          objectFit="cover"
           src={props.banner}
           alt="#"
         />

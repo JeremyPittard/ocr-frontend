@@ -31,11 +31,17 @@ export const Contact = () => {
       .then((response) => response.json())
       .then((response) => {
         // console.log(response);
-        setFormState(2);
+        setTimeout(() => {
+
+          setFormState(2);
+        }, 500)
       })
       .catch((error) => {
         console.log(error);
-        setFormState(0)
+        setTimeout(() => {
+
+          setFormState(0)
+        }, 500)
       });
   };
 
