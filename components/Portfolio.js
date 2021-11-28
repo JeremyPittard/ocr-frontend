@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import Image from "next/dist/client/image";
 
 import { Fancybox } from "@fancyapps/ui";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export const Portfolio = (props) => {
   const [galleryArray, setGalleryArray] = useState();
@@ -11,6 +11,8 @@ export const Portfolio = (props) => {
   useEffect(() => {
     setGalleryArray(getGalleryItems());
   }, []);
+
+  const slider = useRef(null)
 
   const slickSettings = {
     dots: true,
@@ -54,6 +56,7 @@ export const Portfolio = (props) => {
     }
     setActiveFilter(cat);
     setGalleryArray(tempArr);
+    slider.current.slickGoTo(0)
   };
 
   return (
@@ -168,7 +171,7 @@ export const Portfolio = (props) => {
           </div>
           <div className="w-2/3">
             <div>
-              <Slider {...slickSettings}>
+              <Slider ref={slider} {...slickSettings}>
                 {galleryArray != null &&
                   galleryArray.map((p, i) => {
                     const imgUrl = p[0].src;
