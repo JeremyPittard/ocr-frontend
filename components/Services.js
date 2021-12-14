@@ -49,52 +49,16 @@ export const Services = (props) => {
             <span className="font-bold text-gray-900">
               Services Offered
             </span>
-            <span className="ml-1">
-              <svg
-                className="w-5 h-5 mt-px text-deep-purple-accent-400"
-                stroke="currentColor"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
-            </span>
           </div>
           <div className="block md:grid grid-cols-2 row-gap-6 sm:grid-cols-4">
             
-            <ul className="space-y-2 mx-1 list-disc">
               {props.services.map((s, i) => {
                 const serviceName = s.service_acf.serviceName;
                 serviceCount++;
-                if (i < 4) {
-                  return <li className="text-xl" key={`service-${i}`}>{serviceName}</li>;
-                }
+                  return <div className="text-xl p-3 bg-ocr-primary shadow-md flex items-center md:justify-center m-1" key={`service-${i}`}>{serviceName}</div>;
               })}
-            </ul>
-            <ul className="space-y-2 mx-1 md:mx-2 list-disc">
-              {props.services.map((s, i) => {
-                const serviceName = s.service_acf.serviceName;
-                serviceCount++;
-                if (i > 4 && i < 9) {
-                  return <li className="text-xl" key={`service-${i}`}>{serviceName}</li>;
-                }
-              })}
-            </ul>
-            <ul className="mx-1 space-y-2 list-disc">
-              {props.services.map((s, i) => {
-                const serviceName = s.service_acf.serviceName;
-                serviceCount++;
-                if (i >= 9) {
-                  return <li className="text-xl" key={`service-${i}`}>{serviceName}</li>;
-                }
-              })}
-            </ul>
-            
+
+              
           </div>
         </div>
       </div>
